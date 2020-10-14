@@ -14,4 +14,4 @@ enable_testing()
 
 add_executable(testcase test.cpp $<TARGET_OBJECTS:src>)
 target_link_libraries(testcase ${CONAN_LIBS})
-add_test(testcase testcase)
+add_test(NAME testcase COMMAND $<TARGET_FILE:testcase>)
