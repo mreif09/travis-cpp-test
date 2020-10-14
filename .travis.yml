@@ -3,6 +3,7 @@ dist: bionic
 
 compiler:
   - gcc
+  - clang
 
 install:
   - sudo apt-get install -y cmake ninja-build
