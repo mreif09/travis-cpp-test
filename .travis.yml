@@ -5,11 +5,12 @@ compiler:
   - gcc
 
 install:
-  - apt-get install -y cmake ninja-build
+  - sudo apt-get install -y cmake ninja-build
 
 script:
   - mkdir build
   - cd build
+  - conan install ..
   - cmake .. -G Ninja
   - ninja
   - ctest

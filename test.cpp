@@ -1,5 +1,6 @@
+#include "gtest/gtest.h"
 #include "src.hpp"
 
-int main() {
-  return add(-1, 1);
+TEST(SRC, add) {
+  EXPECT_EQ(add(1, 2), 3);
 }
