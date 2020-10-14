@@ -6,6 +6,7 @@ compiler:
 
 install:
   - sudo apt-get install -y cmake ninja-build
+  - pip install conan
 
 script:
   - mkdir build
