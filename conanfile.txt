@@ -1,5 +1,10 @@
- [requires]
- gtest/1.10.0
+[requires]
 
- [generators]
- cmake
+[build_requires]
+gtest/1.10.0
+
+[options]
+gtest:shared=True
+
+[generators]
+cmake

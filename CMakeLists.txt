@@ -7,11 +7,8 @@ include(${CMAKE_BINARY_DIR}/conanbuildinfo.cmake)
 conan_basic_setup(TARGETS)
 
 # units
-add_library(src OBJECT src.cpp)
+add_subdirectory(src)
 
 # tests
 enable_testing()
-
-add_executable(testcase test.cpp $<TARGET_OBJECTS:src>)
-target_link_libraries(testcase CONAN_PKG::gtest)
-add_test(NAME testcase COMMAND $<TARGET_FILE:testcase>)
+add_subdirectory(test)
