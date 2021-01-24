@@ -2,13 +2,18 @@ cmake_minimum_required(VERSION 3.12)
 project(travis-cpp-test)
 set(CMAKE_CXX_STANDARD 14)
 
+# configuration
+option(BUILD_TESTS "Build tests and switch on gcov coverage" ON)
+
 # setup conan
 include(${CMAKE_BINARY_DIR}/conanbuildinfo.cmake)
 conan_basic_setup(TARGETS)
 
-# units
+# lib
 add_subdirectory(src)
 
 # tests
-enable_testing()
-add_subdirectory(test)
+if(BUILD_TESTS)
+    enable_testing()
+    add_subdirectory(test)
+endif()

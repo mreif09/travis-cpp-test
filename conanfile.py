@@ -11,11 +11,11 @@ class TestConan(ConanFile):
     generators = "cmake"
     options = {"shared": [True, False]}
     default_options = {"gtest:shared": True, "shared": False}
-    exports_sources = "CMakeLists.txt", "src/*", "test/*"
+    exports_sources = "CMakeLists.txt", "src/*"
 
     def build(self):
         cmake = CMake(self)
-        cmake.configure()
+        cmake.configure(defs={'BUILD_TESTS': 'OFF'})
         cmake.build()
 
     def package(self):
