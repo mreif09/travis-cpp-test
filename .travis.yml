@@ -19,3 +19,7 @@ script:
   - cmake .. -G Ninja
   - ninja
   - ctest
+  - lcov --capture --initial --rc lcov_branch_coverage=1 -d src/ -o initial.info
+  - lcov --capture --rc lcov_branch_coverage=1 -d src/ -o coverage.info
+  - lcov --add-tracefile initial.info --add-tracefile coverage.info -o overall.info
+  - lcov --list --rc lcov_branch_coverage=1 overall.info
