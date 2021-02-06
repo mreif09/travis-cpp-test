@@ -7,10 +7,14 @@ compiler:
 
 install:
   - sudo apt-get install -y cmake ninja-build lcov
-  - cmake --version
   - pip install conan
   - conan profile new default --detect
   - conan profile update settings.compiler.libcxx=libstdc++11 default
+  - conan --version
+  - cmake --version
+  - ninja --version
+  - ctest --version
+  - lcov --version
 
 script:
   - mkdir build
@@ -20,8 +24,8 @@ script:
   - ninja
   - ctest
   - if [ $TRAVIS_COMPILER == "gcc" ]; then
-      lcov --config-file ../.lcovrc --capture --initial -d src/ -o initial.info
-      lcov --config-file ../.lcovrc --capture -d src/ -o coverage.info
-      lcov --config-file ../.lcovrc --add-tracefile initial.info --add-tracefile coverage.info -o overall.info
-      lcov --config-file ../.lcovrc --list overall.info
+      lcov --config-file ../.lcovrc --capture --initial -d src/ -o initial.info;
+      lcov --config-file ../.lcovrc --capture -d src/ -o coverage.info;
+      lcov --config-file ../.lcovrc --add-tracefile initial.info --add-tracefile coverage.info -o overall.info;
+      lcov --config-file ../.lcovrc --list overall.info;
     fi
