@@ -11,7 +11,6 @@ install:
   - pip install conan
   - conan profile new default --detect
   - conan profile update settings.compiler.libcxx=libstdc++11 default
-  - echo $CC
 
 script:
   - mkdir build
@@ -20,7 +19,9 @@ script:
   - cmake .. -G Ninja
   - ninja
   - ctest
-  - lcov --config-file ../.lcovrc --capture --initial -d src/ -o initial.info
-  - lcov --config-file ../.lcovrc --capture -d src/ -o coverage.info
-  - lcov --config-file ../.lcovrc --add-tracefile initial.info --add-tracefile coverage.info -o overall.info
-  - lcov --config-file ../.lcovrc --list overall.info
+  - if [ $TRAVIS_COMPILER == "gcc" ]; then
+      lcov --config-file ../.lcovrc --capture --initial -d src/ -o initial.info
+      lcov --config-file ../.lcovrc --capture -d src/ -o coverage.info
+      lcov --config-file ../.lcovrc --add-tracefile initial.info --add-tracefile coverage.info -o overall.info
+      lcov --config-file ../.lcovrc --list overall.info
+    fi
