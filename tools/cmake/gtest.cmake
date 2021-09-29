@@ -1,5 +1,5 @@
 function(add_gtest target)
-    set(multiValueArgs FILES UNITS)
+    set(multiValueArgs FILES UNITS LIBS)
     cmake_parse_arguments(PARAM "" "" "${multiValueArgs}" ${ARGN})
 
     add_executable(${target} "")
@@ -11,6 +11,10 @@ function(add_gtest target)
     foreach(unit ${PARAM_UNITS})
         target_sources(${target} PRIVATE $<TARGET_OBJECTS:${unit}>)
         target_include_directories(${target} PRIVATE $<TARGET_PROPERTY:${unit},INTERFACE_INCLUDE_DIRECTORIES>)
+    endforeach()
+
+    foreach(lib ${PARAM_LIBS})
+        target_link_libraries(${target} ${lib})
     endforeach()
 
     target_link_options(${target} PRIVATE -lgcov -coverage)
