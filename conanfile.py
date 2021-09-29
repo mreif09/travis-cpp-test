@@ -7,7 +7,7 @@ class TestConan(ConanFile):
     url = "https://github.com/mreif09/travis-cpp-test"
     description = "test for c++, cmake, conan and travis"
     settings = "os", "compiler", "build_type", "arch"
-    build_requires = "gtest/1.10.0"
+    build_requires = "gtest/1.11.0"
     generators = "cmake"
     options = {"shared": [True, False]}
     default_options = {"gtest:shared": True, "shared": False}
