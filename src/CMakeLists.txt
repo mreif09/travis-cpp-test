@@ -1,7 +1,5 @@
 if(BUILD_TESTS)
-    set(COVERAGE_COMPILE_FLAGS "-fprofile-arcs -ftest-coverage -DGCOV_ACTIVE")
-    set(CMAKE_C_FLAGS   "${CMAKE_C_FLAGS} ${COVERAGE_COMPILE_FLAGS}")
-    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${COVERAGE_COMPILE_FLAGS}")
+    add_compile_options(-fprofile-arcs -ftest-coverage)
 endif()
 
 # units

@@ -2,7 +2,7 @@ from conans import ConanFile, CMake
 
 class TestConan(ConanFile):
     name = "test"
-    version = "0.1"
+    version = "0.2"
     license = "test"
     url = "https://github.com/mreif09/travis-cpp-test"
     description = "test for c++, cmake, conan and travis"
